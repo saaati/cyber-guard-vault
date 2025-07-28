@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="flex items-center gap-2 mb-4">
               <Shield className="w-8 h-8 text-neon-blue" />
               <span className="text-2xl font-bold bg-gradient-to-r from-neon-blue to-neon-green bg-clip-text text-transparent">
-                CyberGuard
+                Codefence
               </span>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-6">
@@ -29,18 +29,11 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-foreground mb-4">Contato</h3>
             <div className="space-y-3">
               <a 
-                href="mailto:suporte@cyberguard.com" 
-                className="flex items-center gap-2 text-muted-foreground hover:text-neon-blue transition-colors"
-              >
-                <Mail className="w-4 h-4" />
-                <span className="text-sm">suporte@cyberguard.com</span>
-              </a>
-              <a 
-                href="https://wa.me/5511999999999" 
+                href="https://wa.me/5561998840799" 
                 className="flex items-center gap-2 text-muted-foreground hover:text-neon-green transition-colors"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span className="text-sm">WhatsApp: (11) 99999-9999</span>
+                <span className="text-sm">WhatsApp: (61) 99884-0799</span>
               </a>
             </div>
           </div>
@@ -72,7 +65,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-sm text-muted-foreground">
-            © 2025 CyberGuard. Todos os direitos reservados.
+            © 2025 Codefence. Todos os direitos reservados.
           </div>
           <div className="text-sm text-muted-foreground">
             Desenvolvido com foco em segurança e privacidade
