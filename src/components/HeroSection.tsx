@@ -39,16 +39,19 @@ const HeroSection = () => {
           {/* CTA Button */}
           <div className="pt-8">
             <Button 
+              asChild
               size="lg" 
-              className="bg-gradient-to-r from-neon-blue to-neon-green hover:from-neon-blue/80 hover:to-neon-green/80 text-black font-semibold px-8 py-6 text-lg rounded-xl shadow-[0_0_30px_rgba(0,191,255,0.3)] hover:shadow-[0_0_40px_rgba(0,191,255,0.5)] transition-all duration-300 group"
+              className="bg-gradient-to-r from-neon-blue to-neon-green hover:from-neon-blue/80 hover:to-neon-green/80 text-black font-semibold px-6 md:px-8 py-4 md:py-6 text-base md:text-lg rounded-xl shadow-[0_0_30px_rgba(0,191,255,0.3)] hover:shadow-[0_0_40px_rgba(0,191,255,0.5)] transition-all duration-300 group"
             >
-              <Zap className="w-5 h-5 mr-2 group-hover:animate-pulse" />
-              🔐 Solicitar Consultoria Agora
+              <a href="https://wa.me/5561998840799?text=Olá,%20preciso%20de%20ajuda%20com%20segurança%20digital" target="_blank" rel="noopener noreferrer">
+                <Zap className="w-4 h-4 md:w-5 md:h-5 mr-2 group-hover:animate-pulse" />
+                🔐 Solicitar Consultoria Agora
+              </a>
             </Button>
           </div>
 
           {/* Trust Indicators */}
-          <div className="flex flex-wrap justify-center gap-8 pt-12 text-sm text-muted-foreground">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-8 pt-12 text-xs md:text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse"></div>
               <span>Atendimento 24/7</span>
