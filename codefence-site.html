@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codefence - Segurança Digital e Cyber Intelligence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: hsl(220, 13%, 8%);
+            --foreground: hsl(210, 40%, 98%);
+            --card: hsl(220, 13%, 10%);
+            --card-foreground: hsl(210, 40%, 98%);
+            --muted: hsl(220, 13%, 15%);
+            --muted-foreground: hsl(220, 9%, 46%);
+            --accent: hsl(120, 100%, 50%);
+            --neon-blue: hsl(193, 100%, 50%);
+            --neon-green: hsl(120, 100%, 50%);
+            --cyber-bg: hsl(220, 13%, 8%);
+            --cyber-surface: hsl(220, 13%, 10%);
+            --cyber-border: hsl(220, 13%, 20%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--cyber-bg);
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-2 { gap: 0.5rem; }
+        .gap-3 { gap: 0.75rem; }
+        .gap-4 { gap: 1rem; }
+        .gap-6 { gap: 1.5rem; }
+        .grid { display: grid; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+
+        /* Spacing */
+        .p-4 { padding: 1rem; }
+        .p-6 { padding: 1.5rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+        .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+        .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+        .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+        .py-24 { padding-top: 6rem; padding-bottom: 6rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-12 { margin-bottom: 3rem; }
+        .mb-16 { margin-bottom: 4rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-6 { margin-top: 1.5rem; }
+
+        /* Cards */
+        .card {
+            background-color: var(--card);
+            border: 1px solid var(--cyber-border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-green));
+            color: var(--cyber-bg);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--cyber-surface);
+            color: var(--foreground);
+            border: 1px solid var(--cyber-border);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--muted);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, var(--neon-green), #10b981);
+            color: black;
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 0 30px rgba(0, 255, 127, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            box-shadow: 0 0 40px rgba(0, 255, 127, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Typography */
+        .text-xs { font-size: 0.75rem; }
+        .text-sm { font-size: 0.875rem; }
+        .text-base { font-size: 1rem; }
+        .text-lg { font-size: 1.125rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-4xl { font-size: 2.25rem; }
+        .text-5xl { font-size: 3rem; }
+        .text-6xl { font-size: 3.75rem; }
+
+        .font-medium { font-weight: 500; }
+        .font-semibold { font-weight: 600; }
+        .font-bold { font-weight: 700; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-muted { color: var(--muted-foreground); }
+
+        /* Icons */
+        .icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .icon-sm { width: 1rem; height: 1rem; }
+        .icon-lg { width: 2rem; height: 2rem; }
+
+        /* Gradients and Effects */
+        .bg-gradient-hero {
+            background: linear-gradient(135deg, var(--cyber-bg) 0%, var(--cyber-surface) 50%, var(--cyber-bg) 100%);
+        }
+
+        .bg-gradient-section {
+            background: linear-gradient(180deg, var(--cyber-surface) 0%, var(--cyber-bg) 100%);
+        }
+
+        .gradient-border {
+            position: relative;
+            background: var(--card);
+            border-radius: 0.75rem;
+        }
+
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 1px;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-green));
+            border-radius: inherit;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .md\:text-2xl { font-size: 1.5rem; }
+            .md\:text-3xl { font-size: 1.875rem; }
+            .md\:text-4xl { font-size: 2.25rem; }
+            .md\:text-5xl { font-size: 3rem; }
+            .md\:text-6xl { font-size: 3.75rem; }
+            .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .lg\:text-7xl { font-size: 4.5rem; }
+        }
+
+        /* Specific Components */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--cyber-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-effect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-green));
+            color: var(--cyber-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .trust-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .service-card {
+            background: var(--card);
+            border: 1px solid var(--cyber-border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--neon-blue);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--muted-foreground);
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            color: var(--neon-green);
+            font-weight: bold;
+        }
+
+        .highlight-section {
+            background: linear-gradient(135deg, var(--cyber-surface) 0%, var(--cyber-bg) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-bg-effect {
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 255, 127, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .blog-card {
+            background: var(--card);
+            border: 1px solid var(--cyber-border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--neon-blue);
+        }
+
+        .testimonial-card {
+            background: var(--card);
+            border: 1px solid var(--cyber-border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .star-rating {
+            color: #fbbf24;
+            margin: 1rem 0;
+        }
+
+        .footer {
+            background: var(--cyber-bg);
+            border-top: 1px solid var(--cyber-border);
+        }
+
+        /* Contact Section Specific */
+        .contact-whatsapp-card {
+            background: linear-gradient(135deg, rgba(0, 255, 127, 0.1), rgba(0, 255, 255, 0.1));
+            border: 1px solid rgba(0, 255, 127, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-info-card {
+            background: rgba(var(--cyber-surface), 0.5);
+            border: 1px solid var(--cyber-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-guarantee-card {
+            background: linear-gradient(135deg, rgba(var(--cyber-surface), 0.8), rgba(var(--cyber-bg), 0.8));
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Notification Toast */
+        .toast {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: var(--card);
+            border: 1px solid var(--neon-green);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .toast-description {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section" id="inicio">
+        <div class="hero-bg-effect"></div>
+        <div class="container relative">
+            <div class="text-center animate-fadeInUp">
+                <div class="badge">
+                    🔒 Especialistas em Segurança Digital
+                </div>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+                    Recuperação de<br>
+                    <span class="text-gradient">Contas Invadidas</span><br>
+                    e Cyber Intelligence
+                </h1>
+                <p class="text-xl text-muted mb-8 max-w-3xl mx-auto">
+                    Serviços especializados em recuperação de contas comprometidas, 
+                    investigação digital e proteção contra ameaças cibernéticas. 
+                    Atendimento 24/7 com total confidencialidade.
+                </p>
+                <div class="flex flex-col md:grid-cols-2 gap-4 justify-center items-center mb-12">
+                    <a href="#contato" class="btn btn-primary">
+                        <svg class="icon icon-sm" viewBox="0 0 24 24">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        Solicitar Atendimento
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div class="trust-indicator">
+                        <svg class="icon text-green-400" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12,6 12,12 16,14"></polyline>
+                        </svg>
+                        <span class="text-sm">Atendimento 24/7</span>
+                    </div>
+                    <div class="trust-indicator">
+                        <svg class="icon text-blue-400" viewBox="0 0 24 24">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <circle cx="12" cy="16" r="1"></circle>
+                            <path d="m7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        <span class="text-sm">100% Confidencial</span>
+                    </div>
+                    <div class="trust-indicator">
+                        <svg class="icon text-green-400" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4"></path>
+                            <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
+                            <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path>
+                            <path d="M12 3c0 1-1 3-3 3s-3-2-3-3 1-3 3-3 3 2 3 3"></path>
+                            <path d="M12 21c0-1 1-3 3-3s3 2 3 3-1 3-3 3-3-2-3-3"></path>
+                        </svg>
+                        <span class="text-sm">Métodos Legais</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-24 bg-gradient-section" id="servicos">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    <span class="text-gradient">Nossos Serviços</span>
+                </h2>
+                <p class="text-xl text-muted max-w-3xl mx-auto">
+                    Soluções completas em segurança digital e cyber intelligence para proteger sua identidade online
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="icon text-blue-400" viewBox="0 0 24 24">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                        </svg>
+                        <h3 class="text-xl font-semibold">Recuperação de Contas</h3>
+                    </div>
+                    <div class="mb-4">
+                        <span class="text-sm text-muted">Instagram • Facebook • WhatsApp • Email</span>
+                    </div>
+                    <p class="text-muted mb-6">Recuperação especializada de contas invadidas em redes sociais e plataformas digitais com métodos avançados.</p>
+                    <ul class="feature-list">
+                        <li>Recuperação de senhas alteradas</li>
+                        <li>Remoção de hackers da conta</li>
+                        <li>Restauração de configurações</li>
+                        <li>Proteção contra novas invasões</li>
+                        <li>Suporte 24/7 durante o processo</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="icon text-green-400" viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        <h3 class="text-xl font-semibold">Cyber Intelligence</h3>
+                    </div>
+                    <div class="mb-4">
+                        <span class="text-sm text-muted">Investigação • Monitoramento • Análise</span>
+                    </div>
+                    <p class="text-muted mb-6">Investigação digital avançada para identificar ameaças e proteger sua presença online.</p>
+                    <ul class="feature-list">
+                        <li>Rastreamento de invasores</li>
+                        <li>Análise de vulnerabilidades</li>
+                        <li>Monitoramento de ameaças</li>
+                        <li>Relatórios detalhados</li>
+                        <li>Evidências para ação legal</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="icon text-purple-400" viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21,15 16,10 5,21"></polyline>
+                        </svg>
+                        <h3 class="text-xl font-semibold">Proteção de Dados</h3>
+                    </div>
+                    <div class="mb-4">
+                        <span class="text-sm text-muted">Backup • Criptografia • Segurança</span>
+                    </div>
+                    <p class="text-muted mb-6">Proteção completa de dados pessoais e empresariais contra vazamentos e ataques.</p>
+                    <ul class="feature-list">
+                        <li>Backup seguro de dados</li>
+                        <li>Criptografia avançada</li>
+                        <li>Auditoria de segurança</li>
+                        <li>Configuração de proteções</li>
+                        <li>Treinamento em segurança</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="icon text-red-400" viewBox="0 0 24 24">
+                            <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"></polygon>
+                        </svg>
+                        <h3 class="text-xl font-semibold">Resposta a Incidentes</h3>
+                    </div>
+                    <div class="mb-4">
+                        <span class="text-sm text-muted">Emergência • Contenção • Recuperação</span>
+                    </div>
+                    <p class="text-muted mb-6">Resposta rápida a incidentes de segurança com contenção e recuperação imediata.</p>
+                    <ul class="feature-list">
+                        <li>Atendimento em até 1 hora</li>
+                        <li>Contenção de danos</li>
+                        <li>Análise forense</li>
+                        <li>Plano de recuperação</li>
+                        <li>Prevenção de reincidência</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="icon text-yellow-400" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                        <h3 class="text-xl font-semibold">Consultoria em Segurança</h3>
+                    </div>
+                    <div class="mb-4">
+                        <span class="text-sm text-muted">Avaliação • Estratégia • Implementação</span>
+                    </div>
+                    <p class="text-muted mb-6">Consultoria especializada para implementar as melhores práticas de segurança digital.</p>
+                    <ul class="feature-list">
+                        <li>Avaliação de riscos</li>
+                        <li>Estratégia de segurança</li>
+                        <li>Implementação de controles</li>
+                        <li>Treinamento de equipes</li>
+                        <li>Acompanhamento contínuo</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="icon text-indigo-400" viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14,2 14,8 20,8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10,9 9,9 8,9"></polyline>
+                        </svg>
+                        <h3 class="text-xl font-semibold">Análise Forense</h3>
+                    </div>
+                    <div class="mb-4">
+                        <span class="text-sm text-muted">Evidências • Perícia • Relatórios</span>
+                    </div>
+                    <p class="text-muted mb-6">Análise forense digital para coleta de evidências e suporte a processos legais.</p>
+                    <ul class="feature-list">
+                        <li>Coleta de evidências digitais</li>
+                        <li>Análise de dispositivos</li>
+                        <li>Recuperação de dados deletados</li>
+                        <li>Relatórios técnicos</li>
+                        <li>Suporte legal especializado</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlight Section -->
+    <section class="highlight-section py-24" id="destaque">
+        <div class="highlight-bg-effect"></div>
+        <div class="container relative">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">
+                    <span class="text-gradient">Recuperação Rápida e Segura</span><br>
+                    de Contas Invadidas
+                </h2>
+                <p class="text-xl text-muted mb-12 leading-relaxed">
+                    Especialistas em recuperação de contas comprometidas com técnicas avançadas 
+                    e métodos 100% legais. Recuperamos seu acesso em tempo recorde mantendo 
+                    total confidencialidade no processo.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <div class="flex items-center gap-3">
+                        <svg class="icon text-green-400" viewBox="0 0 24 24">
+                            <polyline points="20,6 9,17 4,12"></polyline>
+                        </svg>
+                        <span class="text-lg">Serviço Confidencial</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg class="icon text-green-400" viewBox="0 0 24 24">
+                            <polyline points="20,6 9,17 4,12"></polyline>
+                        </svg>
+                        <span class="text-lg">Suporte 24/7</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg class="icon text-green-400" viewBox="0 0 24 24">
+                            <polyline points="20,6 9,17 4,12"></polyline>
+                        </svg>
+                        <span class="text-lg">Técnicas Legítimas</span>
+                    </div>
+                </div>
+
+                <div class="mb-12">
+                    <a href="#contato" class="btn btn-primary">
+                        <svg class="icon icon-sm" viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        Iniciar Recuperação Agora
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                    <div class="bg-gradient-to-br from-red-500/10 to-red-600/10 p-6 rounded-lg border border-red-500/20">
+                        <h3 class="text-lg font-semibold mb-3 flex items-center gap-2">
+                            <svg class="icon text-red-400" viewBox="0 0 24 24">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            Emergência? WhatsApp
+                        </h3>
+                        <p class="text-muted mb-4">Para casos urgentes de contas invadidas</p>
+                        <a href="https://wa.me/5561998840799?text=EMERGÊNCIA:%20Minha%20conta%20foi%20invadida" 
+                           class="btn btn-secondary" target="_blank">
+                            Contato de Emergência
+                        </a>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-blue-500/10 to-blue-600/10 p-6 rounded-lg border border-blue-500/20">
+                        <h3 class="text-lg font-semibold mb-3 flex items-center gap-2">
+                            <svg class="icon text-blue-400" viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            Suporte por Email
+                        </h3>
+                        <p class="text-muted mb-4">Para consultas e informações detalhadas</p>
+                        <a href="mailto:contato@codefence.com.br" class="btn btn-secondary">
+                            Enviar Email
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="py-24 bg-gradient-section" id="blog">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    <span class="text-gradient">Blog e Insights</span>
+                </h2>
+                <p class="text-xl text-muted max-w-3xl mx-auto">
+                    Mantenha-se atualizado com as últimas novidades em segurança digital e cyber intelligence
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <article class="blog-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="icon text-blue-400" viewBox="0 0 24 24">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <circle cx="12" cy="16" r="1"></circle>
+                            <path d="m7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        <span class="text-sm text-blue-400 font-medium">SEGURANÇA</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Como Proteger suas Redes Sociais</h3>
+                    <p class="text-muted mb-4">Dicas essenciais para manter suas contas seguras e evitar invasões em redes sociais como Instagram, Facebook e WhatsApp.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-muted">15 Jan 2024</span>
+                        <a href="#" class="btn btn-secondary">Ler mais</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="icon text-green-400" viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        <span class="text-sm text-green-400 font-medium">PREVENÇÃO</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Sinais de que sua Conta foi Invadida</h3>
+                    <p class="text-muted mb-4">Aprenda a identificar os primeiros sinais de invasão e como agir rapidamente para minimizar os danos.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-muted">12 Jan 2024</span>
+                        <a href="#" class="btn btn-secondary">Ler mais</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="icon text-purple-400" viewBox="0 0 24 24">
+                            <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"></polygon>
+                        </svg>
+                        <span class="text-sm text-purple-400 font-medium">EMERGÊNCIA</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">O que Fazer se sua Conta foi Hackeada</h3>
+                    <p class="text-muted mb-4">Passo a passo completo para recuperar o controle de suas contas comprometidas de forma rápida e segura.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-muted">10 Jan 2024</span>
+                        <a href="#" class="btn btn-secondary">Ler mais</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="icon text-yellow-400" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                        <span class="text-sm text-yellow-400 font-medium">TÉCNICO</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Autenticação de Dois Fatores: Guia Completo</h3>
+                    <p class="text-muted mb-4">Como configurar e usar a autenticação de dois fatores para adicionar uma camada extra de segurança às suas contas.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-muted">8 Jan 2024</span>
+                        <a href="#" class="btn btn-secondary">Ler mais</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="icon text-red-400" viewBox="0 0 24 24">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        <span class="text-sm text-red-400 font-medium">AMEAÇAS</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Principais Ameaças Cibernéticas em 2024</h3>
+                    <p class="text-muted mb-4">Conheça as principais ameaças cibernéticas do ano e como se proteger contra ataques cada vez mais sofisticados.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-muted">5 Jan 2024</span>
+                        <a href="#" class="btn btn-secondary">Ler mais</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="icon text-indigo-400" viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14,2 14,8 20,8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                        </svg>
+                        <span class="text-sm text-indigo-400 font-medium">FORENSE</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Perícia Digital: Como Funciona</h3>
+                    <p class="text-muted mb-4">Entenda o processo de perícia digital e como as evidências são coletadas e analisadas em casos de crimes cibernéticos.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-muted">3 Jan 2024</span>
+                        <a href="#" class="btn btn-secondary">Ler mais</a>
+                    </div>
+                </article>
+            </div>
+            <div class="text-center">
+                <a href="#" class="btn btn-primary">Ver Todos os Artigos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantees Section -->
+    <section class="py-24 bg-gradient-section" id="garantias">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    <span class="text-gradient">Nossas Garantias</span>
+                </h2>
+                <p class="text-xl text-muted max-w-3xl mx-auto">
+                    Trabalhamos com total transparência e profissionalismo, oferecendo garantias sólidas em todos os nossos serviços
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
+                <div class="card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="icon text-green-400" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4"></path>
+                            <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
+                            <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path>
+                        </svg>
+                        <h3 class="text-xl font-semibold">Serviço Ético e Legal</h3>
+                    </div>
+                    <p class="text-muted">Todos os nossos métodos são 100% legais e éticos, seguindo as melhores práticas de segurança digital e respeitando a legislação vigente.</p>
+                </div>
+
+                <div class="card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="icon text-blue-400" viewBox="0 0 24 24">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <circle cx="12" cy="16" r="1"></circle>
+                            <path d="m7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        <h3 class="text-xl font-semibold">Métodos Legítimos</h3>
+                    </div>
+                    <p class="text-muted">Utilizamos apenas técnicas reconhecidas pela indústria de cibersegurança, sem comprometer a integridade de sistemas ou dados.</p>
+                </div>
+
+                <div class="card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="icon text-yellow-400" viewBox="0 0 24 24">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        <h3 class="text-xl font-semibold">Transparência Total</h3>
+                    </div>
+                    <p class="text-muted">Mantemos você informado sobre cada etapa do processo, explicando os métodos utilizados e o progresso do seu caso.</p>
+                </div>
+
+                <div class="card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="icon text-purple-400" viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        <h3 class="text-xl font-semibold">Confidencialidade Absoluta</h3>
+                    </div>
+                    <p class="text-muted">Sigilo total sobre suas informações pessoais e detalhes do caso, com acordos de confidencialidade rigorosos.</p>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-cyber-surface/80 to-cyber-bg/80 p-8 rounded-xl border border-neon-blue/30">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold mb-4">Certificações e Credenciais</h3>
+                    <p class="text-muted">Nossa equipe possui as certificações mais respeitadas da indústria</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="bg-cyber-bg/50 p-4 rounded-lg mb-3">
+                            <svg class="icon icon-lg mx-auto text-blue-400" viewBox="0 0 24 24">
+                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold">Equipe Especializada</h4>
+                        <p class="text-sm text-muted">Profissionais certificados em segurança digital</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-cyber-bg/50 p-4 rounded-lg mb-3">
+                            <svg class="icon icon-lg mx-auto text-green-400" viewBox="0 0 24 24">
+                                <path d="M9 12l2 2 4-4"></path>
+                                <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold">Conformidade Legal</h4>
+                        <p class="text-sm text-muted">Aderência total às normas e regulamentações</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-cyber-bg/50 p-4 rounded-lg mb-3">
+                            <svg class="icon icon-lg mx-auto text-purple-400" viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold">Segurança Máxima</h4>
+                        <p class="text-sm text-muted">Protocolos de segurança de nível empresarial</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-24 bg-gradient-section" id="depoimentos">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    <span class="text-gradient">Depoimentos</span>
+                </h2>
+                <p class="text-xl text-muted max-w-3xl mx-auto">
+                    Veja o que nossos clientes dizem sobre nossos serviços de recuperação e segurança digital
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <div class="testimonial-card">
+                    <p class="text-muted mb-4 italic">"Conseguiram recuperar minha conta do Instagram em menos de 24 horas. Serviço impecável e totalmente confidencial. Recomendo!"</p>
+                    <div class="star-rating">★★★★★</div>
+                    <div>
+                        <p class="font-semibold">Maria Silva</p>
+                        <p class="text-sm text-muted">Empresária</p>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="text-muted mb-4 italic">"Excelente atendimento! Recuperaram todos os meus dados e ainda implementaram medidas de segurança. Muito profissionais."</p>
+                    <div class="star-rating">★★★★★</div>
+                    <div>
+                        <p class="font-semibold">João Santos</p>
+                        <p class="text-sm text-muted">Advogado</p>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="text-muted mb-4 italic">"Salvaram minha empresa! Recuperaram nossas contas corporativas invadidas e evitaram grandes prejuízos. Gratidão total!"</p>
+                    <div class="star-rating">★★★★★</div>
+                    <div>
+                        <p class="font-semibold">Carlos Mendes</p>
+                        <p class="text-sm text-muted">CEO</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-cyber-surface/50 to-cyber-bg/50 p-8 rounded-xl border border-cyber-border">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div>
+                        <div class="text-3xl font-bold text-gradient mb-2">98%</div>
+                        <p class="text-muted">Taxa de Sucesso</p>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-gradient mb-2">24/7</div>
+                        <p class="text-muted">Suporte Disponível</p>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-gradient mb-2">500+</div>
+                        <p class="text-muted">Clientes Atendidos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-24 bg-gradient-section" id="contato">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    <span class="text-gradient">Entre em Contato</span>
+                </h2>
+                <p class="text-xl text-muted max-w-3xl mx-auto">
+                    Atendimento confidencial e especializado para suas necessidades de segurança digital
+                </p>
+            </div>
+
+            <div class="max-w-2xl mx-auto">
+                <div class="space-y-8">
+                    <!-- WhatsApp Card -->
+                    <div class="contact-whatsapp-card card">
+                        <div class="mb-4">
+                            <h3 class="text-2xl font-bold flex items-center gap-2">
+                                <svg class="icon text-green-400" viewBox="0 0 24 24">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                Atendimento Imediato
+                            </h3>
+                            <p class="text-muted">Para casos urgentes, fale conosco diretamente no WhatsApp</p>
+                        </div>
+                        <div>
+                            <a href="https://wa.me/5561998840799?text=Olá,%20preciso%20de%20ajuda%20com%20segurança%20digital" 
+                               target="_blank" rel="noopener noreferrer" 
+                               class="btn btn-whatsapp w-full">
+                                <svg class="icon icon-sm" viewBox="0 0 24 24">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                Fale Agora no WhatsApp
+                            </a>
+                            <p class="text-sm text-center text-muted mt-4">
+                                Resposta em até 15 minutos durante horário comercial
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="contact-info-card card">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-bold flex items-center gap-2">
+                                <svg class="icon text-blue-400" viewBox="0 0 24 24">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                                Informações de Contato
+                            </h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3 p-3 rounded-lg bg-cyber-bg/50">
+                                <svg class="icon text-green-400" viewBox="0 0 24 24">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                <div>
+                                    <p class="font-medium">WhatsApp</p>
+                                    <p class="text-sm text-muted">+55 (61) 99884-0799</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Confidentiality Notice -->
+                    <div class="contact-guarantee-card card">
+                        <div class="flex items-start gap-3">
+                            <svg class="icon text-blue-400 mt-1" viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                            <div>
+                                <h3 class="font-semibold mb-2">Garantia de Confidencialidade</h3>
+                                <p class="text-sm text-muted leading-relaxed">
+                                    Todos os dados e informações compartilhadas são protegidos por sigilo profissional absoluto. 
+                                    Utilizamos criptografia de ponta a ponta e não compartilhamos informações com terceiros.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-12">
+        <div class="container">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-2">
+                    <h3 class="text-2xl font-bold text-gradient mb-4">Codefence</h3>
+                    <p class="text-muted mb-4">
+                        Especialistas em segurança digital e cyber intelligence. 
+                        Recuperação de contas invadidas com métodos 100% legais e confidenciais.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Contato</h4>
+                    <div class="space-y-2">
+                        <a href="https://wa.me/5561998840799" class="flex items-center gap-2 text-muted hover:text-green-400 transition-colors">
+                            <svg class="icon icon-sm" viewBox="0 0 24 24">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Legal</h4>
+                    <div class="space-y-2">
+                        <a href="#" class="block text-muted hover:text-blue-400 transition-colors">Política de Privacidade</a>
+                        <a href="#" class="block text-muted hover:text-blue-400 transition-colors">Termos de Uso</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-cyber-border pt-8 text-center">
+                <p class="text-muted">
+                    © 2024 Codefence. Todos os direitos reservados. | 
+                    Focados em segurança digital e recuperação de contas.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="toast-title">Mensagem enviada com sucesso!</div>
+        <div class="toast-description">Entraremos em contato em breve com total discrição.</div>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation classes when elements come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeInUp');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.card, .service-card, .blog-card, .testimonial-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Show toast notification
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        // Contact form simulation (since we can't use React hooks)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to service cards
+            document.querySelectorAll('.service-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                    this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.1)';
+                    this.style.borderColor = 'hsl(193, 100%, 50%)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+                    this.style.borderColor = 'hsl(220, 13%, 20%)';
+                });
+            });
+
+            // Simulate WhatsApp click analytics
+            document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+                link.addEventListener('click', function() {
+                    console.log('WhatsApp contact initiated');
+                    // In a real implementation, you'd track this with analytics
+                });
+            });
+        });
+
+        // Add loading animation to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.href && this.href.includes('#')) {
+                    // Don't animate internal links
+                    return;
+                }
+                
+                // Add a small scale animation
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+
+        // Parallax effect for background elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.hero-bg-effect, .highlight-bg-effect');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translate(-50%, -50%) translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
