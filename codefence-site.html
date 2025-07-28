@@ -11,25 +11,12 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --background: hsl(220, 13%, 8%);
-            --foreground: hsl(210, 40%, 98%);
-            --card: hsl(220, 13%, 10%);
-            --card-foreground: hsl(210, 40%, 98%);
-            --muted: hsl(220, 13%, 15%);
-            --muted-foreground: hsl(220, 9%, 46%);
-            --accent: hsl(120, 100%, 50%);
-            --neon-blue: hsl(193, 100%, 50%);
-            --neon-green: hsl(120, 100%, 50%);
-            --cyber-bg: hsl(220, 13%, 8%);
-            --cyber-surface: hsl(220, 13%, 10%);
-            --cyber-border: hsl(220, 13%, 20%);
-        }
+        /* Direct color values for better compatibility */
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--cyber-bg);
-            color: var(--foreground);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Liberation Sans", "Noto Sans", sans-serif;
+            background-color: hsl(220, 13%, 8%);
+            color: hsl(210, 40%, 98%);
             line-height: 1.6;
         }
 
@@ -79,8 +66,8 @@
 
         /* Cards */
         .card {
-            background-color: var(--card);
-            border: 1px solid var(--cyber-border);
+            background-color: hsl(220, 13%, 10%);
+            border: 1px solid hsl(220, 13%, 20%);
             border-radius: 0.75rem;
             padding: 1.5rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -108,8 +95,8 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--neon-blue), var(--neon-green));
-            color: var(--cyber-bg);
+            background: linear-gradient(135deg, hsl(193, 100%, 50%), hsl(120, 100%, 50%));
+            color: hsl(220, 13%, 8%);
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
         }
 
@@ -119,17 +106,17 @@
         }
 
         .btn-secondary {
-            background-color: var(--cyber-surface);
-            color: var(--foreground);
-            border: 1px solid var(--cyber-border);
+            background-color: hsl(220, 13%, 10%);
+            color: hsl(210, 40%, 98%);
+            border: 1px solid hsl(220, 13%, 20%);
         }
 
         .btn-secondary:hover {
-            background-color: var(--muted);
+            background-color: hsl(220, 13%, 15%);
         }
 
         .btn-whatsapp {
-            background: linear-gradient(135deg, var(--neon-green), #10b981);
+            background: linear-gradient(135deg, hsl(120, 100%, 50%), #10b981);
             color: black;
             padding: 1rem 2rem;
             font-size: 1.125rem;
@@ -159,13 +146,13 @@
         .font-bold { font-weight: 700; }
 
         .text-gradient {
-            background: linear-gradient(135deg, var(--neon-blue), var(--neon-green));
+            background: linear-gradient(135deg, hsl(193, 100%, 50%), hsl(120, 100%, 50%));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .text-muted { color: var(--muted-foreground); }
+        .text-muted { color: hsl(220, 9%, 46%); }
 
         /* Icons */
         .icon {
@@ -183,16 +170,16 @@
 
         /* Gradients and Effects */
         .bg-gradient-hero {
-            background: linear-gradient(135deg, var(--cyber-bg) 0%, var(--cyber-surface) 50%, var(--cyber-bg) 100%);
+            background: linear-gradient(135deg, hsl(220, 13%, 8%) 0%, hsl(220, 13%, 10%) 50%, hsl(220, 13%, 8%) 100%);
         }
 
         .bg-gradient-section {
-            background: linear-gradient(180deg, var(--cyber-surface) 0%, var(--cyber-bg) 100%);
+            background: linear-gradient(180deg, hsl(220, 13%, 10%) 0%, hsl(220, 13%, 8%) 100%);
         }
 
         .gradient-border {
             position: relative;
-            background: var(--card);
+            background: hsl(220, 13%, 10%);
             border-radius: 0.75rem;
         }
 
@@ -201,9 +188,10 @@
             position: absolute;
             inset: 0;
             padding: 1px;
-            background: linear-gradient(135deg, var(--neon-blue), var(--neon-green));
+            background: linear-gradient(135deg, hsl(193, 100%, 50%), hsl(120, 100%, 50%));
             border-radius: inherit;
             mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: exclude;
             mask-composite: exclude;
         }
 
@@ -253,7 +241,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: var(--cyber-bg);
+            background: hsl(220, 13%, 8%);
             position: relative;
             overflow: hidden;
         }
@@ -270,8 +258,8 @@
         }
 
         .badge {
-            background: linear-gradient(135deg, var(--neon-blue), var(--neon-green));
-            color: var(--cyber-bg);
+            background: linear-gradient(135deg, hsl(193, 100%, 50%), hsl(120, 100%, 50%));
+            color: hsl(220, 13%, 8%);
             padding: 0.5rem 1rem;
             border-radius: 9999px;
             font-size: 0.875rem;
@@ -292,8 +280,8 @@
         }
 
         .service-card {
-            background: var(--card);
-            border: 1px solid var(--cyber-border);
+            background: hsl(220, 13%, 10%);
+            border: 1px solid hsl(220, 13%, 20%);
             border-radius: 0.75rem;
             padding: 1.5rem;
             transition: all 0.3s ease;
@@ -303,7 +291,7 @@
         .service-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border-color: var(--neon-blue);
+            border-color: hsl(193, 100%, 50%);
         }
 
         .feature-list {
@@ -316,17 +304,17 @@
             align-items: center;
             gap: 0.5rem;
             margin-bottom: 0.5rem;
-            color: var(--muted-foreground);
+            color: hsl(220, 9%, 46%);
         }
 
         .feature-list li::before {
             content: '✓';
-            color: var(--neon-green);
+            color: hsl(120, 100%, 50%);
             font-weight: bold;
         }
 
         .highlight-section {
-            background: linear-gradient(135deg, var(--cyber-surface) 0%, var(--cyber-bg) 100%);
+            background: linear-gradient(135deg, hsl(220, 13%, 10%) 0%, hsl(220, 13%, 8%) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -343,8 +331,8 @@
         }
 
         .blog-card {
-            background: var(--card);
-            border: 1px solid var(--cyber-border);
+            background: hsl(220, 13%, 10%);
+            border: 1px solid hsl(220, 13%, 20%);
             border-radius: 0.75rem;
             padding: 1.5rem;
             transition: all 0.3s ease;
@@ -352,12 +340,12 @@
 
         .blog-card:hover {
             transform: translateY(-4px);
-            border-color: var(--neon-blue);
+            border-color: hsl(193, 100%, 50%);
         }
 
         .testimonial-card {
-            background: var(--card);
-            border: 1px solid var(--cyber-border);
+            background: hsl(220, 13%, 10%);
+            border: 1px solid hsl(220, 13%, 20%);
             border-radius: 0.75rem;
             padding: 1.5rem;
             text-align: center;
@@ -369,8 +357,8 @@
         }
 
         .footer {
-            background: var(--cyber-bg);
-            border-top: 1px solid var(--cyber-border);
+            background: hsl(220, 13%, 8%);
+            border-top: 1px solid hsl(220, 13%, 20%);
         }
 
         /* Contact Section Specific */
@@ -381,13 +369,13 @@
         }
 
         .contact-info-card {
-            background: rgba(var(--cyber-surface), 0.5);
-            border: 1px solid var(--cyber-border);
+            background: rgba(28, 30, 39, 0.5);
+            border: 1px solid hsl(220, 13%, 20%);
             backdrop-filter: blur(10px);
         }
 
         .contact-guarantee-card {
-            background: linear-gradient(135deg, rgba(var(--cyber-surface), 0.8), rgba(var(--cyber-bg), 0.8));
+            background: linear-gradient(135deg, rgba(28, 30, 39, 0.8), rgba(22, 24, 31, 0.8));
             border: 1px solid rgba(0, 255, 255, 0.3);
             backdrop-filter: blur(10px);
         }
@@ -397,8 +385,8 @@
             position: fixed;
             top: 1rem;
             right: 1rem;
-            background: var(--card);
-            border: 1px solid var(--neon-green);
+            background: hsl(220, 13%, 10%);
+            border: 1px solid hsl(120, 100%, 50%);
             border-radius: 0.5rem;
             padding: 1rem;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -418,7 +406,52 @@
 
         .toast-description {
             font-size: 0.875rem;
-            color: var(--muted-foreground);
+            color: hsl(220, 9%, 46%);
+        }
+
+        /* Responsive Improvements */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 0.75rem;
+            }
+            
+            .text-4xl { font-size: 2rem; }
+            .text-5xl { font-size: 2.5rem; }
+            .text-6xl { font-size: 3rem; }
+            
+            .btn {
+                padding: 0.625rem 1.25rem;
+                font-size: 0.875rem;
+            }
+            
+            .btn-whatsapp {
+                padding: 0.875rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .trust-indicator {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.75rem;
+            }
+            
+            .grid-cols-1 {
+                gap: 1rem;
+            }
+            
+            .py-24 { padding-top: 3rem; padding-bottom: 3rem; }
+            .py-20 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+            .py-16 { padding-top: 2rem; padding-bottom: 2rem; }
+        }
+
+        @media (max-width: 640px) {
+            .flex-col {
+                gap: 1rem;
+            }
+            
+            .md\\:grid-cols-2,
+            .md\\:grid-cols-3 {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
