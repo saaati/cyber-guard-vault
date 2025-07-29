@@ -1128,10 +1128,14 @@
 
         // Contact form simulation (since we can't use React hooks)
         document.addEventListener('DOMContentLoaded', function() {
-            // Add hover effects to service cards
-            document.querySelectorAll('.service-card').forEach(card => {
+            // Add hover effects to service cards with better browser support
+            var serviceCards = document.querySelectorAll('.service-card');
+            for (var i = 0; i < serviceCards.length; i++) {
+                var card = serviceCards[i];
+                
                 card.addEventListener('mouseenter', function() {
                     this.style.transform = 'translateY(-8px)';
+                    this.style.transition = 'all 0.3s ease';
                     this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.1)';
                     this.style.borderColor = 'hsl(193, 100%, 50%)';
                 });
@@ -1141,43 +1145,79 @@
                     this.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
                     this.style.borderColor = 'hsl(220, 13%, 20%)';
                 });
-            });
+            }
 
-            // Simulate WhatsApp click analytics
-            document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
-                link.addEventListener('click', function() {
-                    console.log('WhatsApp contact initiated');
-                    // In a real implementation, you'd track this with analytics
+            // WhatsApp click analytics with error handling
+            var whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
+            for (var j = 0; j < whatsappLinks.length; j++) {
+                whatsappLinks[j].addEventListener('click', function() {
+                    try {
+                        if (typeof console !== 'undefined' && console.log) {
+                            console.log('WhatsApp contact initiated');
+                        }
+                    } catch (e) {
+                        // Silently handle console errors in older browsers
+                    }
                 });
-            });
+            }
         });
 
-        // Add loading animation to buttons
-        document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                if (this.href && this.href.includes('#')) {
-                    // Don't animate internal links
+        // Button animations with fallbacks
+        var buttons = document.querySelectorAll('.btn');
+        for (var k = 0; k < buttons.length; k++) {
+            buttons[k].addEventListener('click', function(e) {
+                var href = this.getAttribute('href');
+                if (href && href.indexOf('#') !== -1) {
                     return;
                 }
                 
-                // Add a small scale animation
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = 'scale(1)';
+                var btn = this;
+                btn.style.transform = 'scale(0.95)';
+                btn.style.transition = 'transform 0.15s ease';
+                setTimeout(function() {
+                    btn.style.transform = 'scale(1)';
                 }, 150);
             });
-        });
+        }
 
-        // Parallax effect for background elements
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.hero-bg-effect, .highlight-bg-effect');
+        // Optimized parallax with throttling and fallbacks
+        var ticking = false;
+        var supportsTransform = 'transform' in document.createElement('div').style;
+        
+        function updateParallax() {
+            if (!supportsTransform) return;
             
-            parallaxElements.forEach(element => {
-                const speed = 0.5;
-                element.style.transform = `translate(-50%, -50%) translateY(${scrolled * speed}px)`;
-            });
-        });
+            var scrolled = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+            var parallaxElements = document.querySelectorAll('.hero-bg-effect, .highlight-bg-effect');
+            
+            for (var l = 0; l < parallaxElements.length; l++) {
+                var element = parallaxElements[l];
+                var speed = 0.5;
+                var translateY = scrolled * speed;
+                element.style.transform = 'translate(-50%, -50%) translateY(' + translateY + 'px)';
+            }
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                if (window.requestAnimationFrame) {
+                    window.requestAnimationFrame(updateParallax);
+                } else {
+                    setTimeout(updateParallax, 16);
+                }
+                ticking = true;
+            }
+        }
+
+        // Only add scroll listener if transforms are supported
+        if (supportsTransform) {
+            if (window.addEventListener) {
+                window.addEventListener('scroll', requestTick);
+            } else if (window.attachEvent) {
+                window.attachEvent('onscroll', requestTick);
+            }
+        }
     </script>
 </body>
 </html>
