@@ -3,7 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="robots" content="index,follow">
+    <meta name="author" content="Codefence">
+    <meta name="theme-color" content="#1c1e27">
+    <meta name="description" content="Codefence - Especialistas em recuperação de contas invadidas e cyber intelligence. Atendimento 24/7 com total confidencialidade.">
     <title>Codefence - Segurança Digital e Cyber Intelligence</title>
+    
+    <!-- Cache Control for Production -->
+    <meta http-equiv="Cache-Control" content="public, max-age=3600">
+    <meta http-equiv="Pragma" content="cache">
+    
+    <!-- Preload Critical Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,10 +29,15 @@
         /* Direct color values for better compatibility */
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Liberation Sans", "Noto Sans", sans-serif;
-            background-color: hsl(220, 13%, 8%);
-            color: hsl(210, 40%, 98%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Liberation Sans", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            background-color: #1c1e27;
+            color: #f8fafc;
             line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
 
         .container {
@@ -66,17 +86,18 @@
 
         /* Cards */
         .card {
-            background-color: hsl(220, 13%, 10%);
-            border: 1px solid hsl(220, 13%, 20%);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
+            background-color: #22242e;
+            border: 1px solid #333540;
+            border-radius: 12px;
+            padding: 24px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
         }
 
         .card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
         }
 
         /* Buttons */
@@ -95,14 +116,16 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, hsl(193, 100%, 50%), hsl(120, 100%, 50%));
-            color: hsl(220, 13%, 8%);
+            background: linear-gradient(135deg, #00bfff, #00ff7f);
+            color: #1c1e27;
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            text-shadow: none;
         }
 
         .btn-primary:hover {
             box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
             transform: translateY(-2px);
+            background: linear-gradient(135deg, #1e90ff, #32cd32);
         }
 
         .btn-secondary {
@@ -271,12 +294,12 @@
         .trust-indicator {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .service-card {
@@ -1180,42 +1203,63 @@
             });
         }
 
-        // Optimized parallax with throttling and fallbacks
-        var ticking = false;
-        var supportsTransform = 'transform' in document.createElement('div').style;
+        // Enhanced compatibility checks and simplified effects
+        var isModernBrowser = false;
+        var supportsTransform = false;
         
-        function updateParallax() {
-            if (!supportsTransform) return;
-            
-            var scrolled = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-            var parallaxElements = document.querySelectorAll('.hero-bg-effect, .highlight-bg-effect');
-            
-            for (var l = 0; l < parallaxElements.length; l++) {
-                var element = parallaxElements[l];
-                var speed = 0.5;
-                var translateY = scrolled * speed;
-                element.style.transform = 'translate(-50%, -50%) translateY(' + translateY + 'px)';
-            }
-            ticking = false;
+        try {
+            var testEl = document.createElement('div');
+            testEl.style.transform = 'translateY(0)';
+            supportsTransform = testEl.style.transform !== '';
+            isModernBrowser = !!window.requestAnimationFrame && !!document.querySelector;
+        } catch (e) {
+            supportsTransform = false;
+            isModernBrowser = false;
         }
-
-        function requestTick() {
-            if (!ticking) {
-                if (window.requestAnimationFrame) {
-                    window.requestAnimationFrame(updateParallax);
-                } else {
-                    setTimeout(updateParallax, 16);
+        
+        // Simple scroll effects with better browser support
+        var lastScrollTime = 0;
+        var isScrolling = false;
+        
+        function updateEffects() {
+            if (!supportsTransform || !isModernBrowser) return;
+            
+            try {
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+                var bgElements = document.querySelectorAll('.hero-bg-effect');
+                
+                for (var i = 0; i < bgElements.length; i++) {
+                    var element = bgElements[i];
+                    var speed = Math.min(scrollTop * 0.2, 100); // Limit movement
+                    element.style.transform = 'translate(-50%, -50%) translateY(' + speed + 'px)';
                 }
-                ticking = true;
+            } catch (e) {
+                // Fallback: disable effects on error
+                supportsTransform = false;
+            }
+            
+            isScrolling = false;
+        }
+        
+        function handleScroll() {
+            var now = Date.now();
+            if (now - lastScrollTime < 16 || isScrolling) return; // Throttle
+            lastScrollTime = now;
+            isScrolling = true;
+            
+            if (isModernBrowser && window.requestAnimationFrame) {
+                window.requestAnimationFrame(updateEffects);
+            } else {
+                setTimeout(updateEffects, 16);
             }
         }
-
-        // Only add scroll listener if transforms are supported
-        if (supportsTransform) {
+        
+        // Initialize scroll effects only if supported
+        if (supportsTransform && isModernBrowser) {
             if (window.addEventListener) {
-                window.addEventListener('scroll', requestTick);
+                window.addEventListener('scroll', handleScroll, false);
             } else if (window.attachEvent) {
-                window.attachEvent('onscroll', requestTick);
+                window.attachEvent('onscroll', handleScroll);
             }
         }
     </script>
