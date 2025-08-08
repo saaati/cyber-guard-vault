@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <!-- DEBUG: Server Compatibility Test - Ultra Compatible Version -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,14 +12,14 @@
     <meta name="description" content="Codefence - Especialistas em recuperação de contas invadidas e cyber intelligence. Atendimento 24/7 com total confidencialidade.">
     <title>Codefence - Segurança Digital e Cyber Intelligence</title>
     
-    <!-- Cache Control for Production -->
-    <meta http-equiv="Cache-Control" content="public, max-age=3600">
+    <!-- Server Compatibility Headers -->
+    <meta http-equiv="Cache-Control" content="no-transform, public, max-age=3600">
     <meta http-equiv="Pragma" content="cache">
+    <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
+    <meta name="format-detection" content="telephone=no">
     
-    <!-- Preload Critical Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- NO External Font Dependencies - Using System Fonts Only -->
+    <!-- DEBUG: Removed Google Fonts dependency for server compatibility -->
     <style>
         * {
             margin: 0;
@@ -28,16 +29,24 @@
 
         /* Direct color values for better compatibility */
 
+        /* DEBUG: Ultra-compatible CSS using system fonts only */
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Liberation Sans", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: #1c1e27;
             color: #f8fafc;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
+        }
+        
+        /* DEBUG: Browser detection console log */
+        body::before {
+            content: "DEBUG: CSS Loaded Successfully";
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
         }
 
         .container {
@@ -385,22 +394,23 @@
         }
 
         /* Contact Section Specific */
+        /* DEBUG: Removed backdrop-filter for server compatibility */
         .contact-whatsapp-card {
-            background: linear-gradient(135deg, rgba(0, 255, 127, 0.1), rgba(0, 255, 255, 0.1));
+            background: rgba(0, 255, 127, 0.15);
             border: 1px solid rgba(0, 255, 127, 0.3);
-            backdrop-filter: blur(10px);
+            /* backdrop-filter: blur(10px); - REMOVED for compatibility */
         }
 
         .contact-info-card {
-            background: rgba(28, 30, 39, 0.5);
-            border: 1px solid hsl(220, 13%, 20%);
-            backdrop-filter: blur(10px);
+            background: rgba(28, 30, 39, 0.8);
+            border: 1px solid #333540;
+            /* backdrop-filter: blur(10px); - REMOVED for compatibility */
         }
 
         .contact-guarantee-card {
-            background: linear-gradient(135deg, rgba(28, 30, 39, 0.8), rgba(22, 24, 31, 0.8));
+            background: rgba(28, 30, 39, 0.9);
             border: 1px solid rgba(0, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
+            /* backdrop-filter: blur(10px); - REMOVED for compatibility */
         }
 
         /* Notification Toast */
@@ -1107,38 +1117,59 @@
     </div>
 
     <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        /* DEBUG: Ultra-compatible JavaScript for maximum server compatibility */
+        console.log('DEBUG: Codefence JavaScript Loading - Ultra Compatible Version');
+        console.log('DEBUG: User Agent:', navigator.userAgent);
+        console.log('DEBUG: Page loaded at:', new Date().toISOString());
+        
+        // Smooth scrolling - ES5 compatible
+        var anchors = document.querySelectorAll('a[href^="#"]');
+        for (var i = 0; i < anchors.length; i++) {
+            anchors[i].addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                var target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    // Fallback for browsers without smooth scrolling
+                    if ('scrollBehavior' in document.documentElement.style) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    } else {
+                        target.scrollIntoView();
+                    }
                 }
             });
-        });
+        }
 
-        // Add animation classes when elements come into view
-        const observerOptions = {
+        // Intersection Observer with fallbacks
+        var observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fadeInUp');
+        if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function(entries) {
+                for (var i = 0; i < entries.length; i++) {
+                    if (entries[i].isIntersecting) {
+                        entries[i].target.classList.add('animate-fadeInUp');
+                    }
                 }
-            });
-        }, observerOptions);
+            }, observerOptions);
 
-        // Observe all cards and sections
-        document.querySelectorAll('.card, .service-card, .blog-card, .testimonial-card').forEach(el => {
-            observer.observe(el);
-        });
+            // Observe all cards and sections
+            var elements = document.querySelectorAll('.card, .service-card, .blog-card, .testimonial-card');
+            for (var j = 0; j < elements.length; j++) {
+                observer.observe(elements[j]);
+            }
+        } else {
+            console.log('DEBUG: IntersectionObserver not supported, using fallback');
+            // Fallback: just add animation class to all elements
+            var fallbackElements = document.querySelectorAll('.card, .service-card, .blog-card, .testimonial-card');
+            for (var k = 0; k < fallbackElements.length; k++) {
+                fallbackElements[k].classList.add('animate-fadeInUp');
+            }
+        }
 
         // Show toast notification
         function showToast() {
@@ -1203,58 +1234,57 @@
             });
         }
 
-        // Enhanced compatibility checks and simplified effects
+        // DEBUG: Enhanced compatibility detection and logging
         var isModernBrowser = false;
         var supportsTransform = false;
+        var debugInfo = {
+            browser: navigator.userAgent,
+            viewport: window.innerWidth + 'x' + window.innerHeight,
+            features: {}
+        };
         
         try {
             var testEl = document.createElement('div');
             testEl.style.transform = 'translateY(0)';
             supportsTransform = testEl.style.transform !== '';
             isModernBrowser = !!window.requestAnimationFrame && !!document.querySelector;
+            
+            debugInfo.features.transform = supportsTransform;
+            debugInfo.features.requestAnimationFrame = !!window.requestAnimationFrame;
+            debugInfo.features.querySelector = !!document.querySelector;
+            debugInfo.features.intersectionObserver = 'IntersectionObserver' in window;
+            
         } catch (e) {
             supportsTransform = false;
             isModernBrowser = false;
+            debugInfo.error = e.message;
         }
         
-        // Simple scroll effects with better browser support
-        var lastScrollTime = 0;
-        var isScrolling = false;
+        console.log('DEBUG: Browser Compatibility Report:', debugInfo);
         
-        function updateEffects() {
-            if (!supportsTransform || !isModernBrowser) return;
-            
-            try {
-                var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-                var bgElements = document.querySelectorAll('.hero-bg-effect');
-                
-                for (var i = 0; i < bgElements.length; i++) {
-                    var element = bgElements[i];
-                    var speed = Math.min(scrollTop * 0.2, 100); // Limit movement
-                    element.style.transform = 'translate(-50%, -50%) translateY(' + speed + 'px)';
-                }
-            } catch (e) {
-                // Fallback: disable effects on error
-                supportsTransform = false;
-            }
-            
-            isScrolling = false;
-        }
-        
+        // Simplified scroll effects - removing complex animations that may cause server issues
         function handleScroll() {
-            var now = Date.now();
-            if (now - lastScrollTime < 16 || isScrolling) return; // Throttle
-            lastScrollTime = now;
-            isScrolling = true;
-            
-            if (isModernBrowser && window.requestAnimationFrame) {
-                window.requestAnimationFrame(updateEffects);
-            } else {
-                setTimeout(updateEffects, 16);
-            }
+            // Disabled complex scroll effects for maximum compatibility
+            console.log('DEBUG: Scroll event fired at:', Date.now());
         }
         
-        // Initialize scroll effects only if supported
+        // Initialize with debugging
+        console.log('DEBUG: Page initialization complete');
+        console.log('DEBUG: Modern browser support:', isModernBrowser);
+        console.log('DEBUG: Transform support:', supportsTransform);
+        
+        // Simple scroll listener for debugging
+        if (window.addEventListener) {
+            window.addEventListener('scroll', handleScroll);
+        } else if (window.attachEvent) {
+            window.attachEvent('onscroll', handleScroll);
+        }
+        
+        // Final compatibility test
+        setTimeout(function() {
+            console.log('DEBUG: Page fully loaded and JavaScript executed successfully');
+            console.log('DEBUG: Final DOM check - elements found:', document.querySelectorAll('.service-card').length, 'service cards');
+        }, 1000);
         if (supportsTransform && isModernBrowser) {
             if (window.addEventListener) {
                 window.addEventListener('scroll', handleScroll, false);
