@@ -4,8 +4,8 @@ import { Shield, Mail, MessageCircle, FileText, Lock } from "lucide-react";
 const Footer = () => {
   return (
     <footer className="bg-cyber-bg border-t border-cyber-border">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
@@ -15,8 +15,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              Especialistas em segurança digital, recuperação de contas e investigação cibernética. 
-              Protegemos sua identidade digital com métodos éticos e profissionais.
+              Especialistas em recuperação de contas Instagram, Gmail, WhatsApp e TikTok. Pentest, auditoria de segurança e investigação digital com métodos éticos e sigilo profissional.
             </p>
             <div className="flex items-center gap-2 p-3 rounded-lg bg-cyber-surface/50 border border-neon-blue/30">
               <Lock className="w-5 h-5 text-neon-blue" />

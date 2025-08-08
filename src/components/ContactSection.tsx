@@ -33,16 +33,16 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-b from-cyber-surface to-cyber-bg" id="contato">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+    <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-cyber-surface to-cyber-bg" id="contato">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
             <span className="bg-gradient-to-r from-neon-blue to-neon-green bg-clip-text text-transparent">
               Entre em Contato
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Atendimento confidencial e especializado para suas necessidades de segurança digital
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4 sm:px-0">
+            Recuperação urgente de contas e consultoria em segurança digital. Atendimento confidencial 24/7
           </p>
         </div>
 
@@ -65,7 +65,7 @@ const ContactSection = () => {
                   size="lg"
                   className="w-full bg-gradient-to-r from-neon-green to-emerald-400 hover:from-neon-green/80 hover:to-emerald-400/80 text-black font-semibold py-6 text-lg rounded-xl shadow-[0_0_30px_rgba(0,255,127,0.3)] hover:shadow-[0_0_40px_rgba(0,255,127,0.5)] transition-all duration-300"
                 >
-                  <a href="https://wa.me/5561998840799?text=Olá,%20preciso%20de%20ajuda%20com%20segurança%20digital" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/5561998840799?text=Olá,%20preciso%20recuperar%20minha%20conta%20urgente" target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="w-5 h-5 mr-2" />
                     Fale Agora no WhatsApp
                   </a>
