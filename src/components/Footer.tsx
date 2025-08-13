@@ -42,14 +42,18 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-foreground mb-4">Informações Legais</h3>
             <div className="space-y-3">
               <a 
-                href="/privacy" 
+                href="https://codefence.com.br/privacy" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 text-muted-foreground hover:text-neon-blue transition-colors"
               >
                 <FileText className="w-4 h-4" />
                 <span className="text-sm">Política de Privacidade</span>
               </a>
               <a 
-                href="/terms" 
+                href="https://codefence.com.br/terms" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 text-muted-foreground hover:text-neon-blue transition-colors"
               >
                 <FileText className="w-4 h-4" />
