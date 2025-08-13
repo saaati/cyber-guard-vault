@@ -32,7 +32,7 @@ const Footer = () => {
                 className="flex items-center gap-2 text-muted-foreground hover:text-neon-green transition-colors"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span className="text-sm">WhatsApp: (61) 99884-0799</span>
+                <span className="text-sm">Atendimento WhatsApp</span>
               </a>
             </div>
           </div>
@@ -64,7 +64,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-sm text-muted-foreground">
-            © 2025 Codefence. Todos os direitos reservados.
+            © 2019-2025 🔥 Codefence. Todos os direitos reservados.
           </div>
           <div className="text-sm text-muted-foreground">
             Desenvolvido com foco em segurança e privacidade

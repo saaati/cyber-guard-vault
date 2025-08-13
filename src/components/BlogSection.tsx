@@ -5,44 +5,52 @@ import { Calendar, ArrowRight, Eye, Shield, AlertTriangle, Lock, Smartphone } fr
 const BlogSection = () => {
   const articles = [
     {
-      icon: <Eye className="w-6 h-6" />,
-      title: "Como saber se estou sendo espionado digitalmente?",
-      description: "Sinais claros de espionagem digital e como detectar dispositivos de monitoramento em seus aparelhos.",
-      date: "15 Jan 2025",
-      slug: "como-detectar-espionagem-digital",
-      category: "Segurança"
+      icon: <Shield className="w-6 h-6" />,
+      title: "Guia Prático: Proteção de Contas Invadidas",
+      description: "Descubra os passos imediatos para recuperar e blindar suas contas contra ataques.",
+      date: "09 Ago 2025",
+      slug: "guia-protecao-contas-invadidas",
+      category: "Recuperação de Contas"
     },
     {
       icon: <AlertTriangle className="w-6 h-6" />,
-      title: "Principais sinais de infidelidade digital",
-      description: "Indicadores comportamentais e tecnológicos que podem revelar atividades suspeitas em relacionamentos.",
-      date: "12 Jan 2025",
-      slug: "sinais-infidelidade-digital",
-      category: "Investigação"
+      title: "5 Golpes Digitais Mais Comuns em 2025",
+      description: "Conheça as fraudes mais utilizadas e saiba como se proteger delas.",
+      date: "28 Jul 2025",
+      slug: "golpes-digitais-comuns-2025",
+      category: "Cibersegurança Geral"
     },
     {
       icon: <Smartphone className="w-6 h-6" />,
-      title: "Guia completo para proteger sua conta do Instagram em 2025",
-      description: "Técnicas avançadas de proteção, configurações de privacidade e prevenção contra hackers.",
-      date: "10 Jan 2025",
-      slug: "proteger-instagram-2025",
-      category: "Proteção"
-    },
-    {
-      icon: <Shield className="w-6 h-6" />,
-      title: "Melhores práticas atualizadas em cibersegurança",
-      description: "Estratégias essenciais para manter sua identidade digital segura em um mundo conectado.",
-      date: "08 Jan 2025",
-      slug: "melhores-praticas-ciberseguranca",
-      category: "Segurança"
+      title: "Como Manter Seu Celular Seguro",
+      description: "Dicas práticas para proteger seus dados em dispositivos móveis.",
+      date: "12 Jul 2025",
+      slug: "como-manter-celular-seguro",
+      category: "Segurança em Dispositivos Móveis"
     },
     {
       icon: <Lock className="w-6 h-6" />,
-      title: "Ferramentas profissionais para testar a segurança do seu website",
-      description: "Análise completa das principais ferramentas de pentest e auditoria de segurança para websites.",
-      date: "05 Jan 2025",
-      slug: "ferramentas-pentest-website",
-      category: "Pentest"
+      title: "Criando Senhas Fortes e Únicas",
+      description: "Aprenda técnicas para criar senhas praticamente impossíveis de serem quebradas.",
+      date: "27 Jun 2025",
+      slug: "criando-senhas-fortes-unicas",
+      category: "Proteção de Dados"
+    },
+    {
+      icon: <Eye className="w-6 h-6" />,
+      title: "Perigos das Redes Wi-Fi Públicas",
+      description: "Entenda os riscos e veja como se proteger ao usar conexões abertas.",
+      date: "09 Mai 2025",
+      slug: "perigos-redes-wifi-publicas",
+      category: "Segurança em Redes"
+    },
+    {
+      icon: <Shield className="w-6 h-6" />,
+      title: "Backup Inteligente: Sua Defesa Contra Perdas",
+      description: "Saiba como fazer backups estratégicos e manter seus dados sempre seguros.",
+      date: "15 Abr 2025",
+      slug: "backup-inteligente-defesa-dados",
+      category: "Gestão e Prevenção de Perdas"
     }
   ];
 

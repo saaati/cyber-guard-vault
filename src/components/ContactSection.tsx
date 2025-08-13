@@ -89,7 +89,7 @@ const ContactSection = () => {
                   <MessageCircle className="w-5 h-5 text-neon-green" />
                   <div>
                     <p className="font-medium text-foreground">WhatsApp</p>
-                    <p className="text-sm text-muted-foreground">+55 (61) 99884-0799</p>
+                    <p className="text-sm text-muted-foreground">Atendimento disponível</p>
                   </div>
                 </div>
               </CardContent>
