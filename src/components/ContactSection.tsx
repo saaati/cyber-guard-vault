@@ -76,24 +76,6 @@ const ContactSection = () => {
               </CardContent>
             </Card>
 
-            {/* Contact Info */}
-            <Card className="bg-cyber-surface/50 border-cyber-border backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-xl text-foreground flex items-center gap-2">
-                  <Shield className="w-5 h-5 text-neon-blue" />
-                  Informações de Contato
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-cyber-bg/50">
-                  <MessageCircle className="w-5 h-5 text-neon-green" />
-                  <div>
-                    <p className="font-medium text-foreground">WhatsApp</p>
-                    <p className="text-sm text-muted-foreground">Atendimento disponível</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
 
             {/* Confidentiality Notice */}
             <Card className="bg-gradient-to-br from-cyber-surface/80 to-cyber-bg/80 border-neon-blue/30 backdrop-blur-sm">

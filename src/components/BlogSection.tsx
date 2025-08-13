@@ -102,9 +102,12 @@ const BlogSection = () => {
                     variant="ghost" 
                     size="sm"
                     className="text-neon-blue hover:text-neon-green hover:bg-cyber-bg group-hover:translate-x-1 transition-all duration-300"
+                    asChild
                   >
-                    Ler mais
-                    <ArrowRight className="w-4 h-4 ml-1" />
+                    <a href={`https://codefence.com.br/blog/${article.slug}`} target="_blank" rel="noopener noreferrer">
+                      Ler mais
+                      <ArrowRight className="w-4 h-4 ml-1" />
+                    </a>
                   </Button>
                 </div>
               </CardContent>
@@ -117,9 +120,12 @@ const BlogSection = () => {
             variant="outline" 
             size="lg"
             className="border-neon-blue/50 text-neon-blue hover:bg-neon-blue/10 hover:border-neon-blue transition-all duration-300"
+            asChild
           >
-            Ver Todos os Artigos
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <a href="https://codefence.com.br/blog" target="_blank" rel="noopener noreferrer">
+              Ver Todos os Artigos
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </a>
           </Button>
         </div>
       </div>
