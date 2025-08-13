@@ -57,33 +57,14 @@ const HighlightSection = () => {
           <Button 
             size="lg" 
             className="bg-gradient-to-r from-neon-green to-neon-blue hover:from-neon-green/80 hover:to-neon-blue/80 text-black font-semibold px-8 py-6 text-lg rounded-xl shadow-[0_0_30px_rgba(0,255,127,0.3)] hover:shadow-[0_0_40px_rgba(0,255,127,0.5)] transition-all duration-300 group"
+            asChild
           >
-            <MessageCircle className="w-5 h-5 mr-2 group-hover:animate-pulse" />
-            📲 Recuperar Minha Conta Agora
+            <a href="https://api.whatsapp.com/send/?phone=5561998840799&text=Ol%C3%A1%2C+preciso+de+ajuda+com+recupera%C3%A7%C3%A3o+de+conta+ou+seguran%C3%A7a+digital&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
+              <MessageCircle className="w-5 h-5 mr-2 group-hover:animate-pulse" />
+              📲 Recuperar Minha Conta Agora
+            </a>
           </Button>
 
-          {/* Emergency Contact */}
-          <div className="mt-8 p-6 rounded-xl bg-gradient-to-r from-cyber-surface/80 to-cyber-surface/60 border border-neon-blue/30 backdrop-blur-sm">
-            <p className="text-sm text-muted-foreground mb-2">
-              <strong className="text-neon-blue">Emergência?</strong> Contato imediato via WhatsApp ou e-mail
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a 
-                href="https://wa.me/5511999999999" 
-                className="flex items-center gap-2 text-neon-green hover:text-neon-blue transition-colors"
-              >
-                <MessageCircle className="w-4 h-4" />
-                <span className="font-medium">WhatsApp Emergencial</span>
-              </a>
-              <div className="hidden sm:block w-px h-4 bg-cyber-border"></div>
-              <a 
-                href="mailto:suporte@cyberguard.com" 
-                className="flex items-center gap-2 text-neon-blue hover:text-neon-green transition-colors"
-              >
-                <span className="font-medium">suporte@cyberguard.com</span>
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
